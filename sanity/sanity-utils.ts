@@ -17,7 +17,7 @@ export async function getProjects(): Promise<Project[]> {
             url,
             content
         }`,
-        {next: { revalidate: revalidate }},
+        // {next: { revalidate: revalidate }},
         {cache: 'no-store'}
     )
 }
@@ -34,7 +34,7 @@ export async function getProject(slug: string): Promise<Project> {
             content
         }`,
         {slug: slug},
-        { next: { revalidate: revalidate } },
+        // { next: { revalidate: revalidate } },
         { cache: 'no-store' }
     )
 }
@@ -47,7 +47,7 @@ export async function getPages(): Promise<Page[]> {
             title,
             "slug": slug.current
         }`,
-        { next: { revalidate: revalidate } },
+        // { next: { revalidate: revalidate } },
         { cache: 'no-store' }
     )
 }
@@ -62,7 +62,7 @@ export async function getPage(slug: string): Promise<Page> {
             content
         }`,
         { slug },
-        { next: { revalidate: revalidate } },
+        // { next: { revalidate: revalidate } },
         { cache: 'no-store' }
     )
 }
