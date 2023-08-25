@@ -45,7 +45,7 @@ export default async function About() {
       </div>
       <div className="py-12">
         {abouts.map(about => (
-          <div>
+          <div key={about._id}>
             <h1 className="text-5xl font-bold py-4">
               {about.title}
             </h1>
