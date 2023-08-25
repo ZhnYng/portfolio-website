@@ -6,7 +6,7 @@ type Props = {
   params: { hackathon: string };
 };
 
-export default async function Project({ params }: Props) {
+export default async function Hackathon({ params }: Props) {
   const slug = params.hackathon;
   const hackathon = await getHackathon(slug);
 

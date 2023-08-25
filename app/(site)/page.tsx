@@ -61,13 +61,13 @@ export default async function Home() {
               hover:scale-105 hover:border-white transition"
           >
             {hackathon.image && (
-              <Image
-                src={hackathon.image}
-                alt={hackathon.name}
-                width={750}
-                height={300}
-                className="object-cover rounded-lg border border-gray-500"
-              />
+            <Image
+              src={hackathon.image}
+              alt={hackathon.name}
+              width={750}
+              height={300}
+              className="object-cover rounded-lg border border-gray-500"
+            />
             )}
             <div 
               className="mt-2 font-bold"

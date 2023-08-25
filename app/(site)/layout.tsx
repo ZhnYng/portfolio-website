@@ -29,14 +29,20 @@ export default async function RootLayout({
             Lim Zhen Yang
           </Link>
           <div className='flex items-center gap-5 text-sm text-gray-400'>
-            {pages.map(page => (
+            {/* {pages.map(page => (
               <Link
                 key={page._id}
                 href={`/${page.slug}`}
               >
                 {page.title}
               </Link>
-            ))}
+            ))} */}
+            <Link
+              key={1}
+              href={`/about`}
+            >
+              About Me
+            </Link>
           </div>
         </header>
         <main className='py-10'>{children}</main>

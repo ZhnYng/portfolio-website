@@ -2,8 +2,10 @@
 import { createClient, groq } from 'next-sanity'
 import clientConfig from './config/client-config';
 import { Project } from '@/types/Project';
-import { Page } from '@/types/Pages';
-import { Hackathon } from '@/types/Hackathons';
+import { Page } from '@/types/Page';
+import { Hackathon } from '@/types/Hackathon';
+import { Contact } from '@/types/Contact';
+import { About } from '@/types/About';
 const revalidate = 0
 
 export async function getProjects(): Promise<Project[]> {
@@ -99,5 +101,34 @@ export async function getHackathon(slug: string): Promise<Hackathon> {
         {slug: slug},
         { next: { revalidate: revalidate } },
         // { cache: 'no-store' }
+    )
+}
+
+export async function getContacts(): Promise<Contact[]> {
+    return createClient(clientConfig).fetch(
+        groq`*[_type=="contact"]{
+            _id,
+            _createdAt,
+            username,
+            profileLink,
+            "favicon": favicon.asset->url,
+        }`,
+        { next: { revalidate: revalidate } },
+        { cache: 'no-store' }
+    )
+}
+
+export async function getAbouts(): Promise<About[]> {
+    return createClient(clientConfig).fetch(
+        groq`*[_type=="about"]{
+            _id,
+            _createdAt,
+            title,
+            "image": image.asset->url,
+            imageDesc,
+            content
+        }`,
+        { next: { revalidate: revalidate } },
+        { cache: 'no-store' }
     )
 }
