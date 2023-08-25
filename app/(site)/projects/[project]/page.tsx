@@ -18,17 +18,30 @@ export default async function Project({ params }: Props) {
         >
           {project.name}
         </h1>
-        <a
-          href={project.url}
-          title="View Project"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-gray-300 rounded-lg text-gray-600 
-          font-bold py-3 px-4 whitespace-nowrap hover:bg-gray-500
-          hover:text-gray-300 transition"
-        >
-          View Project
-        </a>
+        <div>
+          <a
+            href={project.url}
+            title="View Project"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-gray-300 rounded-lg text-gray-600 
+            font-bold py-3 px-4 mx-2 whitespace-nowrap hover:bg-gray-500
+            hover:text-gray-300 transition"
+          >
+            View Project
+          </a>
+          <a
+            href={project.githubUrl}
+            title="GitHub Repo"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-gray-300 rounded-lg text-gray-600 
+            font-bold py-3 px-4 mx-2 whitespace-nowrap hover:bg-gray-500
+            hover:text-gray-300 transition"
+          >
+            Github Repo
+          </a>
+        </div>
       </header>
       <div className="text-lg text-gray-200 mt-5">
         <PortableText value={project.content}/>

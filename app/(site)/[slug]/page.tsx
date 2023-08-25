@@ -7,7 +7,6 @@ type Props = {
 
 export default async function Page ({ params }: Props) {
   const page = await getPage(params.slug)
-  console.log(page)
 
   return (
     <div>

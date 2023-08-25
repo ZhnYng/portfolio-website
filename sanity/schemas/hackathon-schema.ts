@@ -1,6 +1,6 @@
-const project = {
-    name: 'project',
-    title: 'Projects',
+const hackathon = {
+    name: 'hackathon',
+    title: 'Hackathons',
     type: 'document',
     fields: [
         {
@@ -33,11 +33,6 @@ const project = {
             type: 'url',
         },
         {
-            name: 'githubUrl',
-            title: 'GitHub url',
-            type: 'url',
-        },
-        {
             name: 'content',
             title: 'Content',
             type: 'array',
@@ -46,4 +41,4 @@ const project = {
     ]
 }
 
-export default project;
+export default hackathon;

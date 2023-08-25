@@ -17,7 +17,7 @@ export default async function RootLayout({
   children: React.ReactNode
 }) {
   const pages = await getPages();
-  console.log(pages)
+
   return (
     <html lang="en">
       <body className="max-w-6xl mx-auto py-20 px-10">

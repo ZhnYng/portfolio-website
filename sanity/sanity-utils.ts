@@ -1,9 +1,9 @@
-// All the functions we are going to use to grab data
+// This file contains all the functions we are going to use to grab data
 import { createClient, groq } from 'next-sanity'
-import {apiVersion, dataset, projectId} from '../sanity/env'
-import { Project } from '@/types/Project';
 import clientConfig from './config/client-config';
+import { Project } from '@/types/Project';
 import { Page } from '@/types/Pages';
+import { Hackathon } from '@/types/Hackathons';
 const revalidate = 0
 
 export async function getProjects(): Promise<Project[]> {
@@ -15,9 +15,10 @@ export async function getProjects(): Promise<Project[]> {
             "slug": slug.current,
             "image": image.asset->url,
             url,
+            githubUrl,
             content
         }`,
-        // {next: { revalidate: revalidate }},
+        {next: { revalidate: revalidate }},
         {cache: 'no-store'}
     )
 }
@@ -31,6 +32,7 @@ export async function getProject(slug: string): Promise<Project> {
             "slug": slug.current,
             "image": image.asset->url,
             url,
+            githubUrl,
             content
         }`,
         {slug: slug},
@@ -47,7 +49,7 @@ export async function getPages(): Promise<Page[]> {
             title,
             "slug": slug.current
         }`,
-        // { next: { revalidate: revalidate } },
+        { next: { revalidate: revalidate } },
         { cache: 'no-store' }
     )
 }
@@ -62,7 +64,40 @@ export async function getPage(slug: string): Promise<Page> {
             content
         }`,
         { slug },
-        // { next: { revalidate: revalidate } },
-        { cache: 'no-store' }
+        { next: { revalidate: revalidate } },
+        // { cache: 'no-store' }
+    )
+}
+
+export async function getHackathons(): Promise<Hackathon[]> {
+    return createClient(clientConfig).fetch(
+        groq`*[_type=="hackathon"]{
+            _id,
+            _createdAt,
+            name,
+            "slug": slug.current,
+            "image": image.asset->url,
+            url,
+            content
+        }`,
+        {next: { revalidate: revalidate }},
+        // {cache: 'no-store'}
+    )
+}
+
+export async function getHackathon(slug: string): Promise<Hackathon> {
+    return createClient(clientConfig).fetch(
+        groq`*[_type=="hackathon" && slug.current==$slug][0]{
+            _id,
+            _createdAt,
+            name,
+            "slug": slug.current,
+            "image": image.asset->url,
+            url,
+            content,
+        }`,
+        {slug: slug},
+        { next: { revalidate: revalidate } },
+        // { cache: 'no-store' }
     )
 }
