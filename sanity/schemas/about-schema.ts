@@ -1,4 +1,5 @@
 const about = {
+
     name: 'about',
     title: 'About',
     type: 'document',
