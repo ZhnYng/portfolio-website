@@ -10,6 +10,7 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card"
+import ProjectCarousel from "@/components/project-carousel";
 
 export default async function Home() {
   const projects = await getProjects();
@@ -87,34 +88,15 @@ export default async function Home() {
         </Link>
       </div>
 
-      <h2 className="pt-24 font-bold text-4xl flex items-center gap-2" id="my-projects">
-        <BriefcaseBusiness size={40}/>my best works.
+      <h2 className="pt-8 mt-20 font-bold text-4xl flex items-center gap-2" id="my-projects">
+        <BriefcaseBusiness size={40} />some of my work.
       </h2>
-      <div className="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {projects.map((project) => (
-          <Link
-            href={`/projects/${project.slug}`}
-            key={project._id}
-            className="border-2 border-gray-500 rounded-lg p-3 
-              hover:scale-105 hover:border-white transition"
-          >
-            {project.image && (
-              <Image
-                src={project.image}
-                alt={project.name}
-                width={750}
-                height={300}
-                className="object-cover rounded-lg border border-gray-500"
-              />
-            )}
-            <div
-              className="mt-2 font-bold"
-            >
-              {project.name}
-            </div>
-          </Link>
-        ))}
+      
+      <div className="flex justify-center">
+        <ProjectCarousel projects={projects}/>
       </div>
+
+      
       {/* Hackathons */}
       <h2 className="mt-24 font-bold text-gray-300 text-3xl">
         Hackathons

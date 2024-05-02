@@ -20,8 +20,8 @@ export async function getProjects(): Promise<Project[]> {
             githubUrl,
             content
         }`,
-        {next: { revalidate: revalidate }},
-        {cache: 'no-store'}
+        { revalidate: revalidate },
+        { cache: 'no-store' }
     )
 }
 
@@ -38,7 +38,6 @@ export async function getProject(slug: string): Promise<Project> {
             content
         }`,
         {slug: slug},
-        // { next: { revalidate: revalidate } },
         { cache: 'no-store' }
     )
 }
@@ -51,7 +50,7 @@ export async function getPages(): Promise<Page[]> {
             title,
             "slug": slug.current
         }`,
-        { next: { revalidate: revalidate } },
+        { revalidate: revalidate },
         { cache: 'no-store' }
     )
 }
@@ -67,7 +66,6 @@ export async function getPage(slug: string): Promise<Page> {
         }`,
         { slug },
         { next: { revalidate: revalidate } },
-        // { cache: 'no-store' }
     )
 }
 
@@ -82,8 +80,8 @@ export async function getHackathons(): Promise<Hackathon[]> {
             url,
             content
         }`,
-        {next: { revalidate: revalidate }},
-        // {cache: 'no-store'}
+        { revalidate: revalidate },
+        {cache: 'no-store'}
     )
 }
 
@@ -100,7 +98,6 @@ export async function getHackathon(slug: string): Promise<Hackathon> {
         }`,
         {slug: slug},
         { next: { revalidate: revalidate } },
-        // { cache: 'no-store' }
     )
 }
 
@@ -113,7 +110,7 @@ export async function getContacts(): Promise<Contact[]> {
             profileLink,
             "favicon": favicon.asset->url,
         }`,
-        { next: { revalidate: revalidate } },
+        { revalidate: revalidate },
         { cache: 'no-store' }
     )
 }
@@ -128,7 +125,7 @@ export async function getAbouts(): Promise<About[]> {
             imageDesc,
             content
         }`,
-        { next: { revalidate: revalidate } },
+        { revalidate: revalidate },
         { cache: 'no-store' }
     )
 }
