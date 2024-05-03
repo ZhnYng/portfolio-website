@@ -5,7 +5,6 @@ import Image from "next/image";
 export default async function About() {
   const contacts = await getContacts();
   const abouts = await getAbouts();
-  console.log(abouts)
 
   return (
     <div>

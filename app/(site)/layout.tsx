@@ -9,6 +9,8 @@ import React from 'react'
 import { Input } from '@/components/ui/input'
 import { ThemeProvider } from '@/components/theme-provider'
 import { ModeToggle } from '@/components/ui/mode-toggle'
+import { Toaster } from '@/components/ui/toaster'
+import { Footer } from '@/components/footer'
 
 const poppins = Poppins({ subsets: ['latin'], weight: ["100", "300", "400", "700", "900"] })
 
@@ -24,7 +26,7 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={clsx("flex justify-center relative tracking-tight", poppins.className)}>
+      <body className={clsx("flex flex-col items-center relative tracking-tight", poppins.className)}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -34,6 +36,8 @@ export default async function RootLayout({
           <main className='max-w-6xl'>
             {children}
           </main>
+          <Footer />
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

@@ -27,10 +27,10 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
       onMouseEnter={plugin.current.stop}
       onMouseLeave={plugin.current.reset}
     >
-      <CarouselContent className="flex items-center p-12 border my-24">
+      <CarouselContent className="flex items-center p-12 my-24">
         {projects.map((project) => {
           return (
-            <CarouselItem className={project._id}>
+            <CarouselItem key={project._id}>
               {project.image && (
                 <Image
                   src={project.image}
