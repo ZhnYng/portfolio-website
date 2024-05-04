@@ -67,7 +67,6 @@ export default async function Home() {
           <HoverCardContent className="w-fit flex flex-col gap-2">
             <div className="flex items-center">
               Github -
-              <div className="rounded-full p-4 bg-gray-400 mx-1 border border-white"></div>
               ZhnYng
             </div>
             <p className="text-gray-400 text-xs">https://github.com/ZhnYng</p>
@@ -80,13 +79,6 @@ export default async function Home() {
           <HoverCardContent className="w-fit flex flex-col gap-2">
             <div className="flex items-center">
               LinkedIn -
-              <div className="rounded-full p-4 bg-gray-400 mx-1 border border-white"></div>
-              {/* <Image 
-                    alt="LinkedIn profile picture"
-                    src="https://media.licdn.com/dms/image/D5603AQFpqaprtFYJAg/profile-displayphoto-shrink_400_400/0/1699660077611?e=1719446400&v=beta&t=tTeJhIxEBz3AVuG_UKaNBNFGdhPSKlQh0sjXtfQHUdY"
-                    width={100}
-                    height={100}
-                  /> */}
               Lim Zhen Yang
             </div>
             <p className="text-gray-400 text-xs">https://www.linkedin.com/in/limzhenyang-tech</p>

@@ -1,10 +1,10 @@
-import {apiVersion, dataset, projectId} from '../env'
+import {apiVersion, dataset, projectId, useCdn} from '../env'
 
 const clientConfig = {
     projectId,
     dataset,
     apiVersion,
-    useCdn: false, // set true for production and false for development
+    useCdn: useCdn, // set true for production and false for development
 }
 
 export default clientConfig

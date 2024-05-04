@@ -1,19 +1,21 @@
+import { defineField } from "sanity";
+
 const contact = {
     name: 'contact',
     title: 'Contacts',
     type: 'document',
     fields: [
-        {
+        defineField({
             name: 'username',
             title: 'Username',
             type: 'string',
-        },
-        {
-            name: 'profileLink',
-            title: 'Link to Profile',
+        }),
+        defineField({
+            name: 'linkToProfile',
+            title: 'Link to profile',
             type: 'url'
-        },
-        {
+        }),
+        defineField({
             name: 'favicon',
             title: 'Favicon',
             type: 'image',
@@ -25,7 +27,7 @@ const contact = {
                     type: 'string',
                 }
             ]
-        }
+        })
     ]
 }
 
