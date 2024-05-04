@@ -1,60 +1,99 @@
 import { getProject } from "@/sanity/sanity-utils";
-import { PortableText } from "@portabletext/react";
+import { PortableText, PortableTextComponents } from "@portabletext/react";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card"
+import { ChevronLeft, Github, Link2 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { types } from "util";
+import React from "react";
 
-type Props = {
-  params: { project: string };
-};
 
-export default async function Project({ params }: Props) {
+export default async function Project(
+  { params }:
+    {
+      params:
+      { project: string }
+    }
+) {
+
   const slug = params.project;
   const project = await getProject(slug);
 
+  const myPortableTextComponents: PortableTextComponents = {
+    block: ({ children }: any) => <p className="mb-4">{children}</p>,
+    list: {
+      number: ({ children }: any) => <ol className="ml-7 list-decimal">{children}</ol>,
+    }
+  };
+
   return (
-    <div>
-      <header className="flex justify-between items-center">
-        <h1 
-          className="text-gray-300 text-5xl drop-shadow-sm font-extrabold"
-        >
-          {project.name}
-        </h1>
-        <div>
-          <a
-            href={project.url}
-            title="View Project"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-gray-300 rounded-lg text-gray-600 
-            font-bold py-3 px-4 mx-2 whitespace-nowrap hover:bg-gray-500
-            hover:text-gray-300 transition"
+    project ?
+      <div className="my-24">
+        <header className="flex gap-2 items-center">
+          <Link href="/">
+            <ChevronLeft />
+          </Link>
+          <h1
+            className="text-gray-300 text-3xl drop-shadow-sm font-bold"
           >
-            View Project
-          </a>
-          <a
-            href={project.githubUrl}
-            title="GitHub Repo"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-gray-300 rounded-lg text-gray-600 
-            font-bold py-3 px-4 mx-2 whitespace-nowrap hover:bg-gray-500
-            hover:text-gray-300 transition"
-          >
-            Github Repo
-          </a>
+            {project?.name}
+          </h1>
+        </header>
+        <div className="flex gap-8">
+          <div className="text-lg text-gray-200 mt-5 flex-[1]">
+            <PortableText value={project?.content!} components={myPortableTextComponents} />
+          </div>
+          <div className="flex-[1]">
+            <Image
+              src={project.image!}
+              alt={project.name || "Project image"}
+              width={1920}
+              height={1080}
+              className="mt-5 border-2 border-gray-200 object-cover rounded-md"
+            />
+            <div className="flex justify-between items-start">
+              <div className="my-4 flex justify-start gap-2 items-center">
+                {project.technologies ? project.technologies.map((technology) => (
+                  <HoverCard>
+                    <HoverCardTrigger href={technology.url} target="_blank">
+                      <Image
+                        alt={technology.image?.alt!}
+                        src={technology.imageUrl!}
+                        width={50}
+                        height={50}
+                        className="w-8"
+                      />
+                    </HoverCardTrigger>
+                    <HoverCardContent className="w-fit flex flex-col gap-2">
+                      {technology.name}
+                      <p className="text-gray-400 text-xs">{technology.url}</p>
+                    </HoverCardContent>
+                  </HoverCard>
+                ))
+                  :
+                  null}
+              </div>
+              <div className="flex flex-col gap-2 justify-end my-4">
+                <Link href={project?.repositoryUrl || ""} className="flex gap-2 items-center hover:text-blue-500 transition duration-700">
+                  <Github />
+                  View repository
+                </Link>
+                <Link href={project?.projectUrl || ""} className="flex gap-2 items-center hover:text-blue-500 transition duration-700">
+                  <Link2 />
+                  View project
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
-      </header>
-      <div className="text-lg text-gray-200 mt-5">
-        <PortableText value={project.content}/>
       </div>
-      {project.image && (
-        <Image
-          src={project.image}
-          alt={project.name}
-          width={1920}
-          height={1080}
-          className="mt-10 border-2 border-gray-700 object-cover rounded-xl"
-        />
-      )}
-    </div>
+      :
+      <div className="w-full h-full flex justify-center items-center">
+        Project not found!
+      </div>
   );
 }

@@ -1,4 +1,3 @@
-import { getPages } from '@/sanity/sanity-utils'
 import '../globals.css'
 import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
@@ -26,7 +25,7 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={clsx("flex flex-col items-center relative tracking-tight", poppins.className)}>
+      <body className={clsx("flex flex-col items-center relative tracking-tight min-h-screen", poppins.className)}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
