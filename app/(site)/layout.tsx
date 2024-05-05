@@ -25,14 +25,14 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={clsx("flex flex-col items-center relative tracking-tight min-h-screen", poppins.className)}>
+      <body className={clsx("flex flex-col items-center relative tracking-tight min-h-screen max-w-screen", poppins.className)}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
-          <main className='max-w-6xl'>
+          <main className='max-w-6xl w-full'>
             {children}
           </main>
           <Footer />

@@ -94,12 +94,12 @@ export default function EmailForm() {
   return (
     <Form {...form}>
       <form ref={formRef} onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <div className="flex gap-6 items-center">
+        <div className="flex gap-6 items-center flex-col md:flex-row w-full">
           <FormField
             control={form.control}
             name="name"
             render={({ field }) => (
-              <FormItem className="flex-[1]">
+              <FormItem className="flex-[1] w-full">
                 <FormLabel>Name</FormLabel>
                 <FormControl>
                   <Input placeholder="Your name" {...field} />
@@ -115,7 +115,7 @@ export default function EmailForm() {
             control={form.control}
             name="email"
             render={({ field }) => (
-              <FormItem className="flex-[1]">
+              <FormItem className="flex-[1] w-full">
                 <FormLabel>Email</FormLabel>
                 <FormControl>
                   <Input placeholder="Your email" {...field} />

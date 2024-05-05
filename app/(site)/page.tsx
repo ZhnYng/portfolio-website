@@ -24,7 +24,7 @@ export default async function Home() {
   const about = await getAbout("Lim Zhen Yang");
 
   return (
-    <div className="px-14" id="scrolling_div">
+    <div className="px-6 md:px-14 w-full" id="scrolling_div">
       <div className="absolute right-5 top-5 h-full">
         <div className='sticky right-5 top-5'>
           <ModeToggle />
@@ -32,7 +32,7 @@ export default async function Home() {
       </div>
       <header className='flex items-center justify-between my-20'>
         <p>Lim Zhen Yang</p>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 w-40 md:w-56">
           <Search />
           <Input
             type='text'
@@ -40,7 +40,7 @@ export default async function Home() {
           />
         </div>
       </header>
-      <h1 className="text-6xl font-bold max-w-3xl my-28">
+      <h1 className="text-4xl md:text-6xl font-bold max-w-3xl my-8 md:my-28">
         building solutions is my hobby.
       </h1>
       <ScrollTo
@@ -51,32 +51,32 @@ export default async function Home() {
       </ScrollTo>
 
       {/* Self introduction */}
-      <p className="my-28 md:w-1/2">Hi! 👋, my name is Zhen Yang and I am a software engineer, passionate
+      <p className="my-12 md:my-28 md:w-1/2">Hi! 👋, my name is Zhen Yang and I am a software engineer, passionate
         about software that directly impact and benefit the lives of people.</p>
 
       {/* Socials */}
       <Socials contacts={contacts}/>
 
-      <h2 className="pt-8 mt-20 font-bold text-4xl flex items-center gap-2" id="my-projects">
+      {/* Projects */}
+      <h2 className="pt-8 mt-20 font-bold md:text-4xl text-2xl flex items-center gap-2" id="my-projects">
         <BriefcaseBusiness size={40} />some of my work.
       </h2>
-
-      <div className="flex justify-center">
+      <div className="flex justify-center w-full">
         <ProjectCarousel projects={projects} />
       </div>
 
       {/* About Me */}
-      <h2 className="pt-8 mt-20 font-bold text-4xl flex items-center gap-2" id="my-projects">
+      <h2 className="pt-8 mt-20 font-bold md:text-4xl text-2xl flex items-center gap-2" id="my-projects">
         <SquareUserRound size={40} />more about me.
       </h2>
       {about &&
-        <p className="my-28 text-lg max-w-2xl">
+        <p className="my-8 md:my-28 md:text-lg max-w-2xl">
           {about.introduction}
         </p>
       }
 
       {/* Pictures */}
-      <div className="flex justify-between w-full gap-6 my-28">
+      <div className="flex justify-between w-full gap-6 my-6 md:my-28 flex-col md:flex-row">
         <Card className="flex-[1]">
           <CardHeader>
             <CardTitle>{about?.image1.title}</CardTitle>
@@ -134,7 +134,7 @@ export default async function Home() {
       </div>
 
       {/* Contact me */}
-      <h2 className="pt-8 font-bold text-4xl flex items-center gap-2 my-28" id="my-projects">
+      <h2 className="pt-8 font-bold md:text-4xl text-2xl flex items-center gap-2 my-12 md:my-28" id="my-projects">
         <ContactRound size={40} />why be a stranger?
       </h2>
       <EmailForm />

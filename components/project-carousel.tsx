@@ -28,16 +28,16 @@ export default function ProjectCarousel({ projects }: { projects: ProjectsQueryR
   return (
     <Carousel
       plugins={[plugin.current]}
-      className="w-full max-w-4xl"
+      className="w-full max-w-4xl my-6"
       onMouseEnter={plugin.current.stop}
       onMouseLeave={plugin.current.reset}
     >
-      <CarouselContent className="flex items-center mx-12">
+      <CarouselContent className="flex items-center md:mx-12 mx-6">
         {projects.map((project) => {
           return (
             <CarouselItem key={project._id}>
               <div
-                className="my-4 text-xl flex justify-between items-center"
+                className="my-4 md:text-xl flex justify-between items-center"
               >
                 <p className="max-w-sm">
                   {project.name}
@@ -45,10 +45,12 @@ export default function ProjectCarousel({ projects }: { projects: ProjectsQueryR
                 <Link
                   href={`/projects/${project.slug}`}
                   key={project._id}
-                  className="rounded-lg p-3 flex text-sm gap-2 items-center hover:text-blue-500 transition duration-700"
+                  className="rounded-lg md:p-3 flex text-sm gap-2 items-center hover:text-blue-500 transition duration-700"
                 >
-                  <LucideExternalLink size={30}/>
-                  Find out more
+                  <LucideExternalLink size={30} />
+                  <p className="md:block hidden">
+                    Find out more
+                  </p>
                 </Link>
               </div>
               {project.image && (
@@ -78,28 +80,32 @@ export default function ProjectCarousel({ projects }: { projects: ProjectsQueryR
                     </HoverCardContent>
                   </HoverCard>
                 ))
-              :
-                null}
+                  :
+                  null}
               </div>
-              <div className="my-6">
+              <div className="my-6 line-clamp-2 md:line-clamp-none">
                 {project.elevatorPitch}
               </div>
-              <div className="flex gap-6 justify-end">
+              <div className="flex md:gap-6 gap-2 justify-end">
                 <Link href={project.repositoryUrl || ""} className="flex gap-2 items-center hover:text-blue-500 transition duration-700">
                   <Github />
-                  View repository
+                  <p className="md:block hidden">
+                    View repository
+                  </p>
                 </Link>
                 <Link href={project.projectUrl || ""} className="flex gap-2 items-center hover:text-blue-500 transition duration-700">
-                  <Link2/>
-                  View project
+                  <Link2 />
+                  <p className="md:block hidden">
+                    View project
+                  </p>
                 </Link>
               </div>
             </CarouselItem>
           )
         })}
       </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
+      <CarouselPrevious className="hidden md:flex" />
+      <CarouselNext className="hidden md:flex" />
     </Carousel>
   )
 }
