@@ -59,7 +59,7 @@ export default async function Project(
             <div className="flex justify-between items-start">
               <div className="my-4 flex justify-start gap-2 items-center">
                 {project.technologies ? project.technologies.map((technology) => (
-                  <HoverCard>
+                  <HoverCard key={technology._id}>
                     <HoverCardTrigger href={technology.url} target="_blank">
                       <Image
                         alt={technology.image?.alt!}
