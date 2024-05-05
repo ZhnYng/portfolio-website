@@ -33,7 +33,7 @@ export default async function Project(
 
   return (
     project ?
-      <div className="my-24">
+      <div className="md:my-24 m-8">
         <header className="flex gap-2 items-center">
           <Link href="/">
             <ChevronLeft />
@@ -44,7 +44,7 @@ export default async function Project(
             {project?.name}
           </h1>
         </header>
-        <div className="flex gap-8">
+        <div className="flex gap-8 flex-col-reverse md:flex-row justify-center items-center">
           <div className="text-lg text-gray-200 mt-5 flex-[1]">
             <PortableText value={project?.content!} components={myPortableTextComponents} />
           </div>
@@ -56,7 +56,7 @@ export default async function Project(
               height={1080}
               className="mt-5 border-2 border-gray-200 object-cover rounded-md"
             />
-            <div className="flex justify-between items-start">
+            <div className="flex justify-between items-start items-center">
               <div className="my-4 flex justify-start gap-2 items-center">
                 {project.technologies ? project.technologies.map((technology) => (
                   <HoverCard key={technology._id}>
@@ -78,14 +78,18 @@ export default async function Project(
                   :
                   null}
               </div>
-              <div className="flex flex-col gap-2 justify-end my-4">
+              <div className="flex flex-row md:flex-col gap-2 justify-end my-4">
                 <Link href={project?.repositoryUrl || ""} className="flex gap-2 items-center hover:text-blue-500 transition duration-700">
                   <Github />
-                  View repository
+                  <p className="md:block hidden">
+                    View repository
+                  </p>
                 </Link>
                 <Link href={project?.projectUrl || ""} className="flex gap-2 items-center hover:text-blue-500 transition duration-700">
                   <Link2 />
-                  View project
+                  <p className="md:block hidden">
+                    View project
+                  </p>
                 </Link>
               </div>
             </div>
