@@ -44,7 +44,7 @@ export default async function Project(
             {project?.name}
           </h1>
         </header>
-        <div className="flex gap-8 flex-col-reverse md:flex-row justify-center items-center">
+        <div className="flex gap-8 flex-col-reverse md:flex-row justify-center">
           <div className="text-lg text-gray-200 mt-5 flex-[1]">
             <PortableText value={project?.content!} components={myPortableTextComponents} />
           </div>
@@ -56,7 +56,7 @@ export default async function Project(
               height={1080}
               className="mt-5 border-2 border-gray-200 object-cover rounded-md"
             />
-            <div className="flex justify-between items-start items-center">
+            <div className="flex justify-between items-start">
               <div className="my-4 flex justify-start gap-2 items-center">
                 {project.technologies ? project.technologies.map((technology) => (
                   <HoverCard key={technology._id}>
