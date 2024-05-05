@@ -61,7 +61,7 @@ export default async function Home() {
         <BriefcaseBusiness size={40} />some of my work.
       </h2>
 
-      <div className="flex justify-center my-16">
+      <div className="flex justify-center">
         <ProjectCarousel projects={projects} />
       </div>
 

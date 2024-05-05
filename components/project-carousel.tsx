@@ -28,11 +28,11 @@ export default function ProjectCarousel({ projects }: { projects: ProjectsQueryR
   return (
     <Carousel
       plugins={[plugin.current]}
-      className="w-full max-w-3xl"
+      className="w-full max-w-4xl"
       onMouseEnter={plugin.current.stop}
       onMouseLeave={plugin.current.reset}
     >
-      <CarouselContent className="flex items-center">
+      <CarouselContent className="flex items-center mx-12">
         {projects.map((project) => {
           return (
             <CarouselItem key={project._id}>
