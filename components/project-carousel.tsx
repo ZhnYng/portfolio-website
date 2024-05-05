@@ -69,7 +69,7 @@ export default function ProjectCarousel({ projects }: { projects: ProjectsQueryR
                         src={technology.imageUrl!}
                         width={50}
                         height={50}
-                        className="w-8"
+                        className="w-8 rounded-md"
                       />
                     </HoverCardTrigger>
                     <HoverCardContent className="w-fit flex flex-col gap-2">

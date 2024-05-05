@@ -27,6 +27,7 @@ export default async function Project(
     block: ({ children }: any) => <p className="mb-4">{children}</p>,
     list: {
       number: ({ children }: any) => <ol className="ml-7 list-decimal">{children}</ol>,
+      bullet: ({ children }: any) => <ul className="ml-7 list-disc">{children}</ul>,
     }
   };
 
@@ -65,7 +66,7 @@ export default async function Project(
                         src={technology.imageUrl!}
                         width={50}
                         height={50}
-                        className="w-8"
+                        className="w-8 rounded-md"
                       />
                     </HoverCardTrigger>
                     <HoverCardContent className="w-fit flex flex-col gap-2">
